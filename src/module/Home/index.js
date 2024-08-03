@@ -1,8 +1,6 @@
 import React from "react";
-import Navigation from "../../components/Navigation";
-const Home =()=>{
-    return<div>
-        <Navigation/>
+const Home = () => {
+    return <div>
         In home component
     </div>
 }

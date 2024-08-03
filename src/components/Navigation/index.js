@@ -15,7 +15,7 @@ const Navigation = () => {
                     <Nav.Link href="/dashboard">Dashboard</Nav.Link>
                 </Nav>
                 <Nav className="me-auto">
-                    <NavDropdown title="Login" id="basic-nav-dropdown">
+                    {/* <NavDropdown title="Login" id="basic-nav-dropdown">
                         <NavDropdown.Item href="/login?type=patient">Patient Login</NavDropdown.Item>
                         <NavDropdown.Item href="/login?type=doctor">
                             Doctor Login
@@ -24,7 +24,7 @@ const Navigation = () => {
                         <NavDropdown.Item href="/login?type=pathalogy">
                             Pathalogist Login
                         </NavDropdown.Item>
-                    </NavDropdown>
+                    </NavDropdown> */}
                 </Nav>
             </Container>
         </Navbar>
