@@ -8,9 +8,16 @@ import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 import { FaUser } from 'react-icons/fa';
 import { FaRegCircleUser } from 'react-icons/fa6';
 import SignUp from './module/SignUp';
+import React, { useEffect, useState } from "react";
 
 
 function App() {
+  const isLoggedInUser = localStorage.getItem("isLoggedIn");
+  const [isVerifiedUser, setIsVerifiedUser] = useState(isLoggedInUser === "true" ? true : false)
+  console.log(isVerifiedUser, "...seeeeee//....", isLoggedInUser)
+  useEffect(() => {
+    setIsVerifiedUser(isLoggedInUser === "true" ? true : false)
+  }, [isLoggedInUser])
   return (
     <div className="App">
       <Navbar bg="primary" data-bs-theme="dark">
@@ -19,12 +26,18 @@ function App() {
             <Navbar.Brand href="/">Ehealth</Navbar.Brand>
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/about-us">About us</Nav.Link>
-            <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+            {isVerifiedUser && <Nav.Link href="/dashboard">Dashboard</Nav.Link>}
           </Nav>
           <Nav className="me-auto">
             <NavDropdown style={{ padding: 0 }} title={<span><FaRegCircleUser style={{ fontSize: '1.5em' }} /> </span>} id="basic-nav-dropdown">
-              <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-              <NavDropdown.Item href="/signup">Sign up</NavDropdown.Item>
+              {!isVerifiedUser ?
+                <>
+                  <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                  <NavDropdown.Item href="/signup">Sign up</NavDropdown.Item>
+                </>
+                :
+                <NavDropdown.Item onClick={() => localStorage.clear()}>Log out</NavDropdown.Item>
+              }
             </NavDropdown>
           </Nav>
         </Container>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card, Nav } from "react-bootstrap";
-const LoginContainer = ({ loginType = "doctor", data = [], tabClickHandler }) => {
+const LoginContainer = ({ loginType = "doctor", data = [], tabClickHandler = () => { }, submitHandler = () => { } }) => {
     return (
         <div className="auth-wrapper">
             <div className="auth-inner">
@@ -44,7 +44,7 @@ const LoginContainer = ({ loginType = "doctor", data = [], tabClickHandler }) =>
                                 </div>
                             </div>
                             <div className="d-grid">
-                                <Button type="submit" className="btn btn-primary">Submit</Button>
+                                <Button type="submit" className="btn btn-primary" onClick={submitHandler}>Submit</Button>
                             </div>
                             <p className="forgot-password text-right">
                                 Forgot <a href="#">password?</a>
