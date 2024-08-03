@@ -1,24 +1,16 @@
 import React from "react";
 import { Button, Card, Nav } from "react-bootstrap";
-const LoginContainer = () => {
+const LoginContainer = ({ loginType = "doctor", data = [], tabClickHandler }) => {
     return (
         <div className="auth-wrapper">
             <div className="auth-inner">
                 <Card>
                     <Card.Header>
-                        <Nav variant="tabs" defaultActiveKey={1}>
-                            <Nav.Item>
-                                <Nav.Link eventKey={1} href="/login?type=doctor">Doctor</Nav.Link>
+                        <Nav fill variant="tabs" defaultActiveKey={loginType} onSelect={tabClickHandler}>{data.map(value =>
+                            <Nav.Item key={value.id}>
+                                <Nav.Link eventKey={value.type} >{value.name}</Nav.Link>
                             </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey={2} href="/login?type=patient">Patient</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey={3} href="/login?type=pharmacy">Pharmacist</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link eventKey={4} href="/login?type=pathalogy">Pathalogist</Nav.Link>
-                            </Nav.Item>
+                        )}
                         </Nav>
                     </Card.Header>
                     <Card.Body>
