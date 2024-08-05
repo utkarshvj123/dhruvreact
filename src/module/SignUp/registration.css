@@ -1,0 +1,71 @@
+/* Ensure the body and html have no default margins or paddings and full height */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.signup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure it takes up at least the full viewport height */
+  background-image: url("C:\Users\Dell\Desktop\newHC\dhruvreact\src\module\assets\img.jpg");
+  background-size: 35%; 
+
+  
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.signup-inner {
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  background: #7f819c;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Include padding and border in element's total width */
+  margin: 0 auto; /* Centering the form horizontally */
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #2b1d1d;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #1d4168;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #cfdeee;
+}
