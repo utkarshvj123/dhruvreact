@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import { Box, Button, Paper, Checkbox, CssBaseline, FormControlLabel, Grid, Link, TextField, Typography } from '@mui/material';
+import { Box, Button, Paper, Checkbox, CssBaseline, FormControlLabel, Grid, Link, TextField, Typography, Tabs, Tab } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -14,91 +14,163 @@ const useStyles = makeStyles((theme) => ({
         backgroundPosition: 'center',
     },
     paper: {
-        margin: "60px 20px 0px 20px",
+        // margin: "60px 20px 0px 20px",
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
     },
     avatar: {
-        margin: 10,
+        // margin: 10,
         backgroundColor: "transparent",
     },
     form: {
         width: '100%', // Fix IE 11 issue.
-        marginTop: 10,
+        // marginTop: 10,
     },
     submit: {
         margin: 10,
     },
 }));
 
-export default function LoginMain() {
-    const classes = useStyles();
+const UserLogin = (classes) => {
+    return <Grid sx={{ marginTop: 30 }}>
+        <CssBaseline />
+        <Grid item xs={false} sm={4} md={7} className={classes.image} />
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square sx={{
+            transition: "none",
+            boxShadow: "none"
+        }}>
+            <div className={classes.paper}>
+                {/* <Avatar className={classes.avatar}>
+                <LockOutlinedIcon />
+            </Avatar> */}
+                <Typography component="h1" variant="h5">
+                    Sign in
+                </Typography>
+                <form className={classes.form} noValidate>
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
+                    />
+                    <FormControlLabel
+                        control={<Checkbox value="remember" color="primary" />}
+                        label="Remember me"
+                    />
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        className={classes.submit}
+                    >
+                        Sign In
+                    </Button>
+                    <Grid container>
+                        <Grid item xs>
+                            <Link href="#" variant="body2">
+                                Forgot password?
+                            </Link>
+                        </Grid>
+                        <Grid item>
+                            <Link href="#" variant="body2">
+                                {"Don't have an account? Sign Up"}
+                            </Link>
+                        </Grid>
+                    </Grid>
+
+                </form>
+            </div>
+        </Grid>
+    </Grid>
+}
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
 
     return (
-        <Grid container component="main" className={classes.root}>
-            <CssBaseline />
-            <Grid item xs={false} sm={4} md={7} className={classes.image} />
-            <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-                <div className={classes.paper}>
-                    {/* <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar> */}
-                    <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography>
-                    <form className={classes.form} noValidate>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
-                            Sign In
-                        </Button>
-                        <Grid container>
-                            <Grid item xs>
-                                <Link href="#" variant="body2">
-                                    Forgot password?
-                                </Link>
-                            </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
-                        </Grid>
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`vertical-tabpanel-${index}`}
+            aria-labelledby={`vertical-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box sx={{ p: 3 }}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
 
-                    </form>
-                </div>
-            </Grid>
-        </Grid>
+export default function LoginMain() {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+
+    return (
+        <div className='d-flex' style={{ height: "-webkit-fill-available" }}>
+            <div style={{ width: "55%" }}>
+
+            </div>
+            <Box className={classes.root}
+                sx={{
+                    flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: "100%", width: "45%", transition: " box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
+                    boxShadow: "0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12)",
+                    boxSizing: "border-box"
+                }}
+            >
+                <Tabs
+                    orientation="vertical"
+                    variant="scrollable"
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="Vertical tabs example"
+                    sx={{ borderRight: 1, borderColor: 'divider', width: "30%", marginTop: 40 }}
+                >
+                    <Tab label="Item One" />
+                    <Tab label="Item Two" />
+                    <Tab label="Item Three" />
+                    <Tab label="Item Four" />
+                </Tabs>
+                {/* <CssBaseline /> */}
+                <TabPanel value={value} index={0}>
+                    {UserLogin(classes)}
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    {UserLogin(classes)}
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    {UserLogin(classes)}
+                </TabPanel>
+                <TabPanel value={value} index={3}>
+                    {UserLogin(classes)}
+                </TabPanel>
+            </Box>
+        </div>
+
     );
 }
