@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import { Box, Button, Paper, Checkbox, CssBaseline, FormControlLabel, Grid, Link, TextField, Typography, Tabs, Tab } from '@mui/material';
+import { Box, Button, Paper, Checkbox, CssBaseline, FormControlLabel, Grid, Link, TextField, Typography, Tabs, Tab, CardMedia } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -134,7 +134,11 @@ export default function LoginMain() {
     return (
         <div className='d-flex' style={{ height: "-webkit-fill-available" }}>
             <div style={{ width: "55%" }}>
-
+                {/* <CardMedia
+                    component='iframe'
+                    title='test'
+                    src='../../assets/test.mp4'
+                /> */}
             </div>
             <Box className={classes.root}
                 sx={{
