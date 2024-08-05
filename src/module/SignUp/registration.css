@@ -10,7 +10,7 @@ html, body {
   justify-content: center;
   align-items: center;
   min-height: 100vh; /* Ensure it takes up at least the full viewport height */
-  background-image: url("C:\Users\Dell\Desktop\newHC\dhruvreact\src\module\assets\img.jpg");
+  /* background-image: url("C:\Users\Dell\Desktop\newHC\dhruvreact\src\module\assets\img.jpg"); */
   background-size: 35%; 
 
   

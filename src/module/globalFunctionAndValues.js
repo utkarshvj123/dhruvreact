@@ -1,0 +1,1 @@
+export const userData = [{ type: "doctor", name: "Doctor", id: 1 }, { type: "patient", name: "Patient", id: 2 }, { type: "pathology", name: "Pathology", id: 3 }, { type: "pharmacy", name: "Pharmacist", id: 4 }]

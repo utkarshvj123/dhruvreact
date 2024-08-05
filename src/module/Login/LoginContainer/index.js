@@ -1,59 +1,106 @@
-import React from "react";
-import { Button, Card, Nav } from "react-bootstrap";
-const LoginContainer = ({ loginType = "doctor", data = [], tabClickHandler = () => { }, submitHandler = () => { } }) => {
-    return (
-        <div className="auth-wrapper">
-            <div className="auth-inner">
-                <Card>
-                    <Card.Header>
-                        <Nav fill variant="tabs" defaultActiveKey={loginType} onSelect={tabClickHandler}>{data.map(value =>
-                            <Nav.Item key={value.id}>
-                                <Nav.Link eventKey={value.type} >{value.name}</Nav.Link>
-                            </Nav.Item>
-                        )}
-                        </Nav>
-                    </Card.Header>
-                    <Card.Body>
-                        <form>
-                            <h3>Sign In</h3>
+import React, { useState } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
+import "./style.css";
 
-                            <div className="mb-3">
-                                <label>Email address</label>
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    placeholder="Enter email"
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label>Password</label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    placeholder="Enter password"
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <div className="custom-control custom-checkbox">
-                                    <input
-                                        type="checkbox"
-                                        className="custom-control-input"
-                                        id="customCheck1"
-                                    />
-                                    <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                                </div>
-                            </div>
-                            <div className="d-grid">
-                                <Button type="submit" className="btn btn-primary" onClick={submitHandler}>Submit</Button>
-                            </div>
-                            <p className="forgot-password text-right">
-                                Forgot <a href="#">password?</a>
-                            </p>
-                        </form></Card.Body>
-                </Card>
+// import BackgroundImage from "../../assets/images/background.png";
+
+const LoginContainer = () => {
+    const [inputUsername, setInputUsername] = useState("");
+    const [inputPassword, setInputPassword] = useState("");
+
+    const [show, setShow] = useState(false);
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        setLoading(true);
+        await delay(500);
+        console.log(`Username :${inputUsername}, Password :${inputPassword}`);
+        if (inputUsername !== "admin" || inputPassword !== "admin") {
+            setShow(true);
+        }
+        setLoading(false);
+    };
+
+    const handlePassword = () => { };
+
+    function delay(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    return (
+        <div
+            className="sign-in__wrapper"
+        // style={{ backgroundImage: `url(${BackgroundImage})` }}
+        >
+            {/* Overlay */}
+            <div className="sign-in__backdrop"></div>
+            {/* Form */}
+            <Form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+                {/* Header */}
+
+                <div className="h4 mb-2 text-center">Sign In</div>
+                {/* ALert */}
+                {show ? (
+                    <Alert
+                        className="mb-2"
+                        variant="danger"
+                        onClose={() => setShow(false)}
+                        dismissible
+                    >
+                        Incorrect username or password.
+                    </Alert>
+                ) : (
+                    <div />
+                )}
+                <Form.Group className="mb-2" controlId="username">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={inputUsername}
+                        placeholder="Username"
+                        onChange={(e) => setInputUsername(e.target.value)}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group className="mb-2" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        value={inputPassword}
+                        placeholder="Password"
+                        onChange={(e) => setInputPassword(e.target.value)}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group className="mb-2" controlId="checkbox">
+                    <Form.Check type="checkbox" label="Remember me" />
+                </Form.Group>
+                {!loading ? (
+                    <Button className="w-100" variant="primary" type="submit">
+                        Log In
+                    </Button>
+                ) : (
+                    <Button className="w-100" variant="primary" type="submit" disabled>
+                        Logging In...
+                    </Button>
+                )}
+                <div className="d-grid justify-content-end">
+                    <Button
+                        className="text-muted px-0"
+                        variant="link"
+                        onClick={handlePassword}
+                    >
+                        Forgot password?
+                    </Button>
+                </div>
+            </Form>
+            {/* Footer */}
+            <div className="w-100 mb-2 position-absolute bottom-0 start-50 translate-middle-x text-white text-center">
+                Made by Hendrik C | &copy;2022
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default LoginContainer;

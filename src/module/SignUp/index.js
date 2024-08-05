@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './registration.css'; 
+import './registration.css';
+import { Button, Card, Nav } from "react-bootstrap";
+import { userData } from "../globalFunctionAndValues";
 const SignUp = () => {
-    const [userType, setUserType] = useState('patient'); // Default user type
+    console.log(userData, "....userdata")
+    const [userType, setUserType] = useState(userData[0].type); // Default user type
     const navigate = useNavigate();
 
-    const handleUserTypeChange = (event) => {
-        setUserType(event.target.value);
+    const tabClickHandler = (event) => {
+        console.log(event, ".....event..")
+        setUserType(event);
     };
 
     const handleSubmit = (event) => {
@@ -17,73 +21,117 @@ const SignUp = () => {
     };
 
     return (
-        <div className="signup-wrapper">
-            <div className="signup-inner">
-                <h3>Sign Up</h3>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="userType">Select User Type:</label>
-                        <select id="userType" value={userType} onChange={handleUserTypeChange} className="form-control">
-                            <option value="patient">Patient</option>
-                            <option value="doctor">Doctor</option>
-                            <option value="pharmacist">Pharmacist</option>
-                            <option value="pathologist">Pathologist</option>
-                        </select>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="firstName">First Name</label>
-                        <input type="text" id="firstName" className="form-control" placeholder="First name" required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" id="lastName" className="form-control" placeholder="Last name" required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email">Email Address</label>
-                        <input type="email" id="email" className="form-control" placeholder="Enter email" required />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input type="password" id="password" className="form-control" placeholder="Enter password" required />
-                    </div>
-                    {userType === 'patient' && (
-                        <>
-                        
-                            <div className="form-group">
-                                <label htmlFor="Aadhar No">Aadhar No</label>
-                                <input type="text" id="Aadhar No" className="form-control" placeholder="Aadhar No" required />
+        <div className="auth-wrapper">
+            <div className="auth-inner">
+                <Card>
+                    <Card.Header>
+                        <Nav fill variant="tabs" defaultActiveKey={userType} onSelect={tabClickHandler}>{userData.map(value =>
+                            <Nav.Item key={value.id}>
+                                <Nav.Link eventKey={value.type} >{value.name}</Nav.Link>
+                            </Nav.Item>
+                        )}
+                        </Nav>
+                    </Card.Header>
+                    <Card.Body>
+                        <form>
+                            <h3>Sign Up</h3>
+
+                            <div className="mb-3 form-group">
+                                <label>Name</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Name"
+                                />
                             </div>
-                        </>
-                    )}
-                    {userType !== 'patient' && (
-                        <>
-                            <div className="form-group">
-                                <label htmlFor="hospitalName">Hospital/Organization Name</label>
-                                <input type="text" id="hospitalName" className="form-control" placeholder="Hospital/Organization Name" required />
+
+                            <div className="mb-3">
+                                <label>Email address</label>
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    placeholder="Enter email"
+                                />
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="qualification">Qualification</label>
-                                <input type="text" id="qualification" className="form-control" placeholder="Qualification" required />
+                            <div className="mb-3">
+                                <label>Mobile No.</label>
+                                <input
+                                    type="mobile"
+                                    className="form-control"
+                                    placeholder="Enter email"
+                                />
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="age">Age</label>
-                                <input type="number" id="age" className="form-control" placeholder="Age" required />
+                            {userType !== "patient" ? <div className="mb-3">
+                                <label>Qualification</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Qualification"
+                                />
+                            </div> : <div className="mb-3">
+                                <label>Weight</label>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    placeholder="Weight"
+                                />
+                            </div>}
+                            <div className="mb-3">
+                                <label>Age</label>
+                                <input
+                                    type="number"
+                                    className="form-control"
+                                    placeholder="Age"
+                                />
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="licenseNo">License No</label>
-                                <input type="text" id="licenseNo" className="form-control" placeholder="License No" required />
+
+                            <div className="mb-3 form">
+                                <label for="exampleFormControlTextarea1">Address</label>
+                                <textarea className="form-control" placeholder="Address" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
-                        </>
-                    )}
-                    <div className="form-group">
-                        <label htmlFor="address">Address</label>
-                        <textarea id="address" className="form-control" placeholder="Address" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" className="btn btn-primary">Sign Up</button>
-                </form>
+
+                            {userType !== "patient" ? <div className="mb-3 form">
+                                <label>License No.</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="License Number"
+                                />
+                            </div> : <div className="mb-3">
+                                <label>Aadhar  No.</label>
+                                <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Aadhar Number"
+                                />
+                            </div>
+                            }
+                            <div className="mb-3">
+                                <label>Confirm Password</label>
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    placeholder="Confirm password"
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <label>Password</label>
+                                <input
+                                    type="password"
+                                    className="form-control"
+                                    placeholder="Enter password"
+                                />
+                            </div>
+                            <div className="d-grid">
+                                <Button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</Button>
+                            </div>
+                            <p className="forgot-password text-right">
+                                Forgot <a href="#">password?</a>
+                            </p>
+                        </form></Card.Body>
+                </Card>
             </div>
-        </div>
-    );
+        </div>);
 };
 
 export default SignUp;
