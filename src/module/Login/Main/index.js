@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { makeStyles } from '@mui/styles';
 import { Box, Button, Paper, Checkbox, CssBaseline, FormControlLabel, Grid, Link, TextField, Typography, Tabs, Tab, CardMedia } from '@mui/material';
+import { userData } from '../../globalFunctionAndValues';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const UserLogin = (classes) => {
+const UserLogin = (classes, details, currentSelectedIndex, formRef, formHandler) => {
+    console.log(details, ".......details......", currentSelectedIndex)
     return <Grid sx={{ marginTop: 30 }}>
         <CssBaseline />
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
@@ -83,7 +86,7 @@ const UserLogin = (classes) => {
                     >
                         Sign In
                     </Button>
-                    <Grid container>
+                    {/* <Grid container>
                         <Grid item xs>
                             <Link href="#" variant="body2">
                                 Forgot password?
@@ -94,7 +97,7 @@ const UserLogin = (classes) => {
                                 {"Don't have an account? Sign Up"}
                             </Link>
                         </Grid>
-                    </Grid>
+                    </Grid> */}
 
                 </form>
             </div>
@@ -123,10 +126,16 @@ function TabPanel(props) {
 }
 
 export default function LoginMain() {
-    const classes = useStyles();
     const [value, setValue] = React.useState(0);
+    const classes = useStyles();
+    const valueRef = useRef('') //creating a refernce for TextField Component
+
+    const sendValue = () => {
+        return console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+    }
 
     const handleChange = (event, newValue) => {
+        console.log(newValue, "......newValue")
         setValue(newValue);
     };
 
@@ -153,26 +162,23 @@ export default function LoginMain() {
                     value={value}
                     onChange={handleChange}
                     aria-label="Vertical tabs example"
-                    sx={{ borderRight: 1, borderColor: 'divider', width: "30%", marginTop: 40 }}
-                >
-                    <Tab label="Item One" />
-                    <Tab label="Item Two" />
-                    <Tab label="Item Three" />
-                    <Tab label="Item Four" />
+                    sx={{
+                        borderRight: 1, borderColor: 'divider', width: "30%", "& .MuiTabs-flexContainer": {
+                            display: "flex",
+                            alignItems: "center", justifyContent: "center",
+                            height: "100%",
+                            textAlign: "left"
+                        }
+                    }}
+                >{userData.map((obj, index) =>
+                    <Tab label={obj.name} value={index} key={obj.id} />
+                )}
                 </Tabs>
-                {/* <CssBaseline /> */}
-                <TabPanel value={value} index={0}>
-                    {UserLogin(classes)}
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                    {UserLogin(classes)}
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                    {UserLogin(classes)}
-                </TabPanel>
-                <TabPanel value={value} index={3}>
-                    {UserLogin(classes)}
-                </TabPanel>
+                {userData.map((obj, index) =>
+                    <TabPanel value={value} index={index} key={obj.id}>
+                        {UserLogin(classes, obj, value, handleChange, sendValue)}
+                    </TabPanel>
+                )}
             </Box>
         </div>
 
