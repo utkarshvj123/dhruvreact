@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const UserLogin = (classes, details, currentSelectedIndex, formRef, formHandler) => {
+const UserLogin = (classes, details, currentSelectedIndex, handleFormHandler, formValue, handleFormChanges) => {
     console.log(details, ".......details......", currentSelectedIndex)
     return <Grid sx={{ marginTop: 30 }}>
         <CssBaseline />
@@ -56,11 +56,21 @@ const UserLogin = (classes, details, currentSelectedIndex, formRef, formHandler)
                         margin="normal"
                         required
                         fullWidth
+<<<<<<< HEAD
                         id="Username"
                         label="Username"
                         name="Username"
                         autoComplete="Username"
+=======
+                        id="userName"
+                        label="Username"
+                        name="userName"
+                        autoComplete="username"
+>>>>>>> 83d7d91 (last working)
                         autoFocus
+                        value={formValue?.userName}
+                        // onChange={() => handleFormChanges(formValue?.userName, "userName")}
+                        onChange={handleFormChanges}
                     />
                     <TextField
                         variant="outlined"
@@ -72,6 +82,10 @@ const UserLogin = (classes, details, currentSelectedIndex, formRef, formHandler)
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        value={formValue?.password}
+                        // onChange={() => handleFormChanges(formValue?.password, "password")}
+                        onChange={handleFormChanges}
+
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
@@ -83,21 +97,22 @@ const UserLogin = (classes, details, currentSelectedIndex, formRef, formHandler)
                         variant="contained"
                         color="primary"
                         className={classes.submit}
+                        onClick={handleFormHandler}
                     >
                         Sign In
                     </Button>
-                    {/* <Grid container>
-                        <Grid item xs>
+                    <Grid container>
+                        {/* <Grid item xs>
                             <Link href="#" variant="body2">
                                 Forgot password?
                             </Link>
-                        </Grid>
+                        </Grid> */}
                         <Grid item>
                             <Link href="#" variant="body2">
                                 {"Don't have an account? Sign Up"}
                             </Link>
                         </Grid>
-                    </Grid> */}
+                    </Grid>
 
                 </form>
             </div>
@@ -127,13 +142,26 @@ function TabPanel(props) {
 
 export default function LoginMain() {
     const [value, setValue] = React.useState(0);
+    const [formValue, setFormValue] = React.useState({ userName: "hello", password: "hello" })
     const classes = useStyles();
-    const valueRef = useRef('') //creating a refernce for TextField Component
-
-    const sendValue = () => {
-        return console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+    console.log(formValue, ".........formValue")
+    const handleFormSubmit = () => {
+        // return console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+        // const clonningValue{ ...formValue }
+        // clonningValue[type]
+        // setFormValue(clonningValue[type])
     }
-
+    const handleFormChanges = (event) => {
+        const { name, value } = event.target;
+        // console.log(type.target.name, "......type....", type.target.value)
+        // const clonningValue = { ...formValue }
+        // clonningValue[type] = value
+        // setFormValue(clonningValue)
+        setFormValue({
+            ...formValue,
+            [name]: value,
+        });
+    }
     const handleChange = (event, newValue) => {
         console.log(newValue, "......newValue")
         setValue(newValue);
@@ -174,11 +202,11 @@ export default function LoginMain() {
                     <Tab label={obj.name} value={index} key={obj.id} />
                 )}
                 </Tabs>
-                {userData.map((obj, index) =>
-                    <TabPanel value={value} index={index} key={obj.id}>
-                        {UserLogin(classes, obj, value, handleChange, sendValue)}
-                    </TabPanel>
-                )}
+                {/* {userData.map((obj, index) => */}
+                <TabPanel value={value} index={value} key={userData[value].id}>
+                    {UserLogin(classes, userData[value], value, handleFormSubmit, formValue, handleFormChanges)}
+                </TabPanel>
+                {/* )} */}
             </Box>
         </div>
 

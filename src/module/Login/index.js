@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from 'react-router-dom';
-import LoginContainer from "./LoginContainer";
 import { userData } from "../globalFunctionAndValues";
 import LoginMain from "./Main";
-function useQuery() {
-    return new URLSearchParams(useLocation().search);
-}
 const Login = () => {
     const [loginType, setLoginType] = useState(userData[2].type)
     const navigate = useNavigate();
