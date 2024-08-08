@@ -7,6 +7,10 @@ body {
   display: flex;
   font-weight: 400;
   font-family: "Fira Sans", sans-serif;
+  background-image: url("/src/assets/img2.jpg"); /* Replace with the path to your image */
+  background-size: cover; /* This makes sure the image covers the whole background */
+  background-position: center; /* This centers the image in the background */
+  background-repeat: no-repeat; /* This prevents the image from repeating */
 }
 #root{
   height: 100vh;

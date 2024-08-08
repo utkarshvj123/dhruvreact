@@ -56,10 +56,10 @@ const UserLogin = (classes, details, currentSelectedIndex, formRef, formHandler)
                         margin="normal"
                         required
                         fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
+                        id="Username"
+                        label="Username"
+                        name="Username"
+                        autoComplete="Username"
                         autoFocus
                     />
                     <TextField

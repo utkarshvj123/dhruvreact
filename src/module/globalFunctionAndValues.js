@@ -1,1 +1,1 @@
-export const userData = [{ type: "doctor", name: "Doctor", id: 1 }, { type: "patient", name: "Patient", id: 2 }, { type: "pathology", name: "Pathology", id: 3 }, { type: "pharmacy", name: "Pharmacist", id: 4 }]
+export const userData = [{ type: "patient", name: "Patient", id: 1 }, { type: "doctor", name: "Doctor", id: 2 }, { type: "pathology", name: "Pathologist", id: 3 }, { type: "pharmacy", name: "Pharmacist", id: 4 }]

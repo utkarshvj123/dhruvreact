@@ -1,0 +1,9 @@
+
+
+.content {
+  position: relative;
+  z-index: 1; /* Ensures content is above the video */
+  text-align: center;
+  padding: 20px;
+  /* Add more styling as needed */
+}

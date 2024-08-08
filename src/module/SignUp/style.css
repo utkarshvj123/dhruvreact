@@ -1,0 +1,119 @@
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #b3d1f0, #96c6ee);
+}
+
+.auth-inner {
+  width: 100%;
+  max-width: 900px;
+  padding: 40px;
+  background: #b3d1f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  background-color: #c1d7f8; /* Light grayish-blue */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-title {
+  text-align: center;
+  color: #171ae9;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-column {
+  flex: 1;
+  min-width: 280px;
+}
+
+.left-column {
+  border-right: 1px solid #ddd;
+  padding-right: 20px;
+}
+
+.right-column {
+  padding-left: 20px;
+}
+
+.mb-3 {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-control:focus {
+  border-color: #171ae9;
+  box-shadow: 0 0 5px rgba(23, 26, 233, 0.2);
+  outline: none;
+}
+
+.select {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.select:focus {
+  border-color: #171ae9;
+  box-shadow: 0 0 5px rgba(23, 26, 233, 0.2);
+  outline: none;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: #171ae9;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0e0b94;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgot-password a {
+  color: #171ae9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
