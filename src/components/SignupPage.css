@@ -1,0 +1,85 @@
+/* SignupPage.css */
+
+form{
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  width: 40%;
+  border: 2px solid black; 
+  padding: 20px;
+  border-radius: 10px; 
+  background-color: #f9f9f9; 
+  margin: 0 auto;
+  flex-wrap: wrap;
+
+}
+label{
+  margin: 5px 0; /* Reduced margin to minimize space between label and input */
+  padding: 3px;
+
+}
+input{
+  height: 20px;
+  width: 70px;
+}
+.signup-page-container {
+    display: flex;
+    margin: 50px;
+    margin-left: 600px;
+     border-radius: 30px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60dvh;
+    width: 40dvh;
+    background-color:rgb(102, 229, 254);
+    background-image: linear-gradient(skyblue,white,skyblue);
+    box-shadow: 0px 0px 10px 15px white;
+  }
+  
+
+  h1{
+            background-image: linear-gradient(red,yellow,orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 50px;
+            background-image :linear-gradient(lightpink,red,white);
+            text-align: center;
+            margin-top: -5px;
+  }
+  button{
+         height: 50px;
+         width: 70px;
+         border: none;
+         border-radius: 10px;
+         color: cornflowerblue;
+         background-image: linear-gradient(skyblue, white ,skyblue);
+
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(white,skyblue,white);
+    border-radius: 40px;
+    box-shadow: 15px, #00b383;
+  }
+  
+  .role-button {
+    height: 5px;
+    width:70px ;
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: rgb(109, 49, 49);
+    background-color:white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  .role-button:hover {
+    background-color: #45514e;
+  }
+  
