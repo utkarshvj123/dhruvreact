@@ -12,6 +12,11 @@ import DoctorRegistration from './components/DoctorRegistration';
 import MedicineChat from './components/MedicineChart';
 import PatientList from './components/PatientList';
 import DoctorLogin from './components/DoctorLogin';
+import DashBoard from './components/DashBoard';
+import Profile from './components/Profile';
+import EditHealthCard from './components/EditHealthCard';
+import ViewHealthCard from './components/ViewHealthCard';
+import ViewMedicine from './components/ViewMedicine';
 
 
 const App = () => {
@@ -28,17 +33,25 @@ const App = () => {
           </ul>
         </nav>
         <Routes>
-          <Route exact path="/" element={<HomePage/>} />
-          <Route path="/login" element={<LoginPage/>} />
-          <Route path="/signup" element={<SignupPage/>} />
-          <Route path="/signup/doctor" element={<DoctorRegistration/>} />
-          <Route path="/signup/Patient" element={<PatientPage/>} />
-          <Route path="/signup/Shopkeeper" element={<ShopkeeperPage/>} />
-          <Route path="/login/Doctor" element={<DoctorLogin/>}/>
-          <Route path="/about" element={<AboutPage/>} />
-          <Route path="/contact" element={<ContactPage/>} />
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/signup/doctor" element={<DoctorRegistration />} />
+          <Route path="/signup/Patient" element={<PatientPage />} />
+          <Route path="/signup/Shopkeeper" element={<ShopkeeperPage />} />
+          <Route path="/login/Doctor" element={<DoctorLogin />} />
+          <Route path="/edit-health-card" element={<EditHealthCard />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/patients" element={<PatientList />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/view-detail" element={<ViewHealthCard />} />
+
+          <Route path="/view-doctor" element={<ViewMedicine />} />
+
           <Route path="/medicine/:patientId" element={<MedicineChat />} />
+
         </Routes>
       </div>
     </Router>

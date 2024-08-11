@@ -1,6 +1,7 @@
 // Dashboard.jsx
 import React from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 // import './Dashboard.css';
 
 const DashBoard = () => {
@@ -32,8 +33,8 @@ const DashBoard = () => {
     <div className="dashboard">
       <h1>Health Card Dashboard</h1>
       <div className="button-container">
-        <button onClick={handleProfileClick}>Doctor Profile</button>
-        <button onClick={handlePatientInfoClick}>Patient Health Information</button>
+        <Button onClick={handleProfileClick}>Doctor Profile</Button>
+        <Button onClick={handlePatientInfoClick}>Patient Health Information</Button>
       </div>
     </div>
   );

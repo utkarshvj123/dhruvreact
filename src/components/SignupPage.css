@@ -47,7 +47,7 @@ input{
             text-align: center;
             margin-top: -5px;
   }
-  button{
+  /* button{
          height: 50px;
          width: 70px;
          border: none;
@@ -55,7 +55,7 @@ input{
          color: cornflowerblue;
          background-image: linear-gradient(skyblue, white ,skyblue);
 
-  }
+  } */
   .button-container {
     display: flex;
     flex-direction: column;
@@ -66,13 +66,13 @@ input{
   }
   
   .role-button {
-    height: 5px;
-    width:70px ;
+    /* height: 5px;
+    width:70px ; */
     margin: 10px;
     padding: 15px 30px;
     font-size: 16px;
-    color: rgb(109, 49, 49);
-    background-color:white;
+    color: white;
+    background-color:#0d6efd;
     border: none;
     border-radius: 5px;
     text-decoration: none;
@@ -80,6 +80,6 @@ input{
   }
   
   .role-button:hover {
-    background-color: #45514e;
+    background-color: #0a53be;
   }
   

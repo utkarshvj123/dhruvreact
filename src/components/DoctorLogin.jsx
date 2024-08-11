@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import DashBoard from './DashBoard';
+import { Button } from 'react-bootstrap';
 
 function DoctorLogin() {
   const [formData, setFormData] = useState({
@@ -15,13 +16,13 @@ function DoctorLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get('http://localhost:8080/doctor/login', formData,{
+      const response = await axios.get('http://localhost:8080/doctor/login', formData, {
         headers: {
-            "Content-Type": "application/json"
+          "Content-Type": "application/json"
         }
-    });
+      });
       alert('Login successful');
-      <DashBoard/>
+      <DashBoard />
     } catch (error) {
       console.error('There was an error logging in!', error);
     }
@@ -29,9 +30,9 @@ function DoctorLogin() {
 
   return (
     <form onSubmit={handleSubmit}>
-     <label >Name <input type="text" name="userName" value={formData.userName} onChange={handleChange} placeholder="Name" required /></label>
+      <label >Name <input type="text" name="userName" value={formData.userName} onChange={handleChange} placeholder="Name" required /></label>
       <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" required />
-      <button type="submit">Login</button>
+      <Button type="submit">Login</Button>
     </form>
   );
 }
