@@ -1,13 +1,18 @@
 import React from "react";
 import CustomisedTable from "./CustomisedTable";
 import { Button } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
+
 
 const ViewMedicine = () => {
+    const navigate = useNavigate();
+
     const linkFollow = (cell, row, rowIndex, formatExtraData) => {
         return (
             <Button
                 onClick={() => {
                     // this.onFollowChanged(row);
+                    navigate("/view-detail")
                 }}
             >
                 View
