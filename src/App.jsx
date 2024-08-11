@@ -17,6 +17,8 @@ import Profile from './components/Profile';
 import EditHealthCard from './components/EditHealthCard';
 import ViewHealthCard from './components/ViewHealthCard';
 import ViewMedicine from './components/ViewMedicine';
+import PatientLogin from './components/PatientLogin';
+import PharmacistLogin from './components/PharmacistLogin';
 
 
 const App = () => {
@@ -28,6 +30,7 @@ const App = () => {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/signup">Signup</Link></li>
+            <li><Link to="/dashboard">Dashboard</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
@@ -35,6 +38,9 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/login/Doctor" element={<DoctorLogin />} />
+          <Route path="/login/Patient" element={<PatientLogin />} />
+          <Route path="/login/Pharmacist" element={<PharmacistLogin />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/signup/doctor" element={<DoctorRegistration />} />
           <Route path="/signup/Patient" element={<PatientPage />} />

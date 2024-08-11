@@ -10,7 +10,7 @@ const SignupPage = () => {
       <div className="button-container">
         <Link className="btn btn-primary" to="/signup/doctor" className="role-button" >Doctor</Link>
         <Link to="/signup/patient" className="role-button">Patient</Link>
-        <Link to="/signup/shopkeeper" className="role-button">Shopkeeper</Link>
+        <Link to="/signup/shopkeeper" className="role-button">Pharmacist</Link>
       </div>
     </div>
   );

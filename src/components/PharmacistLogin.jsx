@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-function DoctorLogin() {
+function PharmacistLogin() {
   const [formData, setFormData] = useState({
     userName: '',
     password: ''
@@ -118,4 +118,4 @@ function DoctorLogin() {
   );
 }
 
-export default DoctorLogin;
+export default PharmacistLogin;

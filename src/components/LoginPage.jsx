@@ -3,6 +3,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import './SignupPage.css';
 import DoctorLogin from './DoctorLogin';
+import PatientLogin from './PatientLogin';
+import PharmacistLogin from './PharmacistLogin';
 
 const LoginPage = () => {
   return (
@@ -17,6 +19,8 @@ const LoginPage = () => {
       <nav>
         <Routes>
           <Route path="/login" element={<DoctorLogin />} />
+          <Route path="/login" element={<PatientLogin />} />
+          <Route path="/login" element={<PharmacistLogin />} />
         </Routes>
       </nav>
     </div>

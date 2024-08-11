@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Doctorsignup } from "../services/user-services"
+import { Doctorsignup } from "../services/user-services";
 import { useNavigate } from 'react-router-dom';
-import './SignupPage.css';
-import { Button } from 'react-bootstrap';
+import './SignupPage.css'; // Optional, for additional custom styling
+import { Button, Form, Container } from 'react-bootstrap';
 
 const DoctorRegistration = () => {
     const navigate = useNavigate();
@@ -26,143 +26,128 @@ const DoctorRegistration = () => {
         });
     };
 
-
-    // const handleCheckboxChange = (e) => {
-    //     const { name, checked } = e.target;
-    //     setDoctor({
-    //         ...doctor,
-    //         [name]: checked,
-    //     });
-    // };
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
         Doctorsignup(doctor).then((resp) => {
             console.log(resp);
-            console.log("success log");
+            console.log("Registration successful");
             navigate('/login');
         }).catch((error) => {
-            console.log(error)
-            alert("Bad Credential")
-        })
-
-
+            console.log(error);
+            alert("Bad Credential");
+        });
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className='FormBody'>
-                <label>
-                    Doctor Name:
-                </label>
-                <input
-                    type="text"
-                    name="doctorName"
-                    value={doctor.doctorName}
-                    onChange={handleChange}
-                    required
-                />
+        <Container className="mt-5">
+            <h2 className="mb-4">Doctor Registration</h2>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3" controlId="doctorName">
+                    <Form.Label>Doctor Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="doctorName"
+                        value={doctor.doctorName}
+                        onChange={handleChange}
+                        required
+                    />
+                </Form.Group>
 
-            </div>
-            <div>
-                <label>
-                    UserName:
-                </label>
-                <input
-                    type="text"
-                    name="userName"
-                    value={doctor.userName}
-                    onChange={handleChange}
-                />
+                <Form.Group className="mb-3" controlId="userName">
+                    <Form.Label>User Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="userName"
+                        value={doctor.userName}
+                        onChange={handleChange}
+                    />
+                </Form.Group>
 
-            </div>
-            <div>
-                <label>
-                    Qualification:
+                <Form.Group className="mb-3" controlId="qualification">
+                    <Form.Label>Qualification</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="qualification"
+                        value={doctor.qualification}
+                        onChange={handleChange}
+                        required
+                    />
+                </Form.Group>
 
-                </label>
-                <input
-                    type="text"
-                    name="qualification"
-                    value={doctor.qualification}
-                    onChange={handleChange}
-                    required
-                />
+                <Form.Group className="mb-3" controlId="specification">
+                    <Form.Label>Specification</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="specification"
+                        value={doctor.specification}
+                        onChange={handleChange}
+                        required
+                    />
+                </Form.Group>
 
-            </div>
-            <div>
-                <label>
-                    Specification:
-                </label>
-                <input
-                    type="text"
-                    name="specification"
-                    value={doctor.specification}
-                    onChange={handleChange}
-                    required
-                />
+                <Form.Group className="mb-3" controlId="hospitalName">
+                    <Form.Label>Hospital Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="hospitalName"
+                        value={doctor.hospitalName}
+                        onChange={handleChange}
+                        required
+                    />
+                </Form.Group>
 
-            </div>
-            <div>
-                <label>
-                    Hospital Name:
-                </label>
-                <input
-                    type="text"
-                    name="hospitalName"
-                    value={doctor.hospitalName}
-                    onChange={handleChange}
-                    required
-                />
+                <Form.Group className="mb-3" controlId="hospitalAddress">
+                    <Form.Label>Hospital Address</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="hospitalAddress"
+                        value={doctor.hospitalAddress}
+                        onChange={handleChange}
+                        required
+                    />
+                </Form.Group>
 
-            </div>
-            <div>
-                <label>
-                    Hospital Address:
-                </label>
-                <input
-                    type="text"
-                    name="hospitalAddress"
-                    value={doctor.hospitalAddress}
-                    onChange={handleChange}
-                    required
-                />
+                <Form.Group className="mb-3" controlId="hospitalContactNumber">
+                    <Form.Label>Hospital Contact Number</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="hospitalContactNumber"
+                        value={doctor.hospitalContactNumber}
+                        onChange={handleChange}
+                        pattern="\d{10}"
+                        title="Please enter a 10-digit phone number"
+                        required
+                    />
+                </Form.Group>
 
-            </div>
-            <div>
-                <label>
-                    Hospital Contact Number:
-                </label>
-                <input
-                    type="text"
-                    name="hospitalContactNumber"
-                    value={doctor.hospitalContactNumber}
-                    onChange={handleChange}
-                    pattern="\d{10}" title="Please enter a 10-digit phone number" required />
+                <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        name="password"
+                        value={doctor.password}
+                        onChange={handleChange}
+                        required
+                    />
+                </Form.Group>
 
-            </div>
-            <div>
-                <label htmlFor="">Password:</label>
-                <input type="password" name="password"
-                    value={doctor.password}
-                    onChange={handleChange} required />
-            </div>
-            <div>
-                <label>
-                    Registration Key:
-                </label>
-                <input
-                    type="text"
-                    name="doctorRegKey"
-                    value={doctor.doctorRegKey}
-                    onChange={handleChange}
-                    required
-                />
+                <Form.Group className="mb-3" controlId="doctorRegKey">
+                    <Form.Label>Registration Key</Form.Label>
+                    <Form.Control
+                        type="text"
+                        name="doctorRegKey"
+                        value={doctor.doctorRegKey}
+                        onChange={handleChange}
+                        required
+                    />
+                </Form.Group>
 
-            </div>
-            <Button type="submit">Submit</Button>
-        </form>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
+        </Container>
     );
 };
 
