@@ -1,0 +1,32 @@
+/* src/components/MedicineDetails.css */
+.medicine-details {
+    background-color: #e0f7fa;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .medicine-details h2 {
+    background-color: #00acc1;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #00acc1;
+  }
+  
+  th {
+    background-color: #00acc1;
+    color: white;
+  }
+  

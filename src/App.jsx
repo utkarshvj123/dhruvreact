@@ -19,6 +19,8 @@ import ViewHealthCard from './components/ViewHealthCard';
 import ViewMedicine from './components/ViewMedicine';
 import PatientLogin from './components/PatientLogin';
 import PharmacistLogin from './components/PharmacistLogin';
+import HealthCardTable from './components/HealthCardTable';
+import MedicineDetails from './components/MedicineDetails';
 
 
 const App = () => {
@@ -51,12 +53,13 @@ const App = () => {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/patients" element={<PatientList />} />
           <Route path="/dashboard" element={<DashBoard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/view-detail" element={<ViewHealthCard />} />
+          <Route path="/health-card" element={<HealthCardTable />} />
+          <Route path="/medicine-List" element={<MedicineDetails/>}/>
+          {/* <Route path="/view-detail" element={<ViewHealthCard />} />
 
           <Route path="/view-doctor" element={<ViewMedicine />} />
 
-          <Route path="/medicine/:patientId" element={<MedicineChat />} />
+          <Route path="/medicine/:patientId" element={<MedicineChat />} /> */}
 
         </Routes>
       </div>
